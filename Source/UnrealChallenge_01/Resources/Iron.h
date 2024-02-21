@@ -25,7 +25,10 @@ protected:
 	FTimerHandle SpawnTimerHandle;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawner")
-	float SpawnDelay;
+	float SpawnDelay = 5.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawner")
+	int i = 0;
 
 public:	
 	// Called every frame
@@ -40,6 +43,9 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AActor> ActorClassToBeSpawned;
+
+	//Looping
+	UFUNCTION(BlueprintCallable) void Range();
 
 	//Returns the WhereToSPawn subobject
 	//FORCEINLINE class UBoxComponent* GetWhereToSpawn() const { return WhereToSpawn;  }

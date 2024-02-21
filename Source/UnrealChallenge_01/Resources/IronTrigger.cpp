@@ -2,6 +2,7 @@
 
 
 #include "IronTrigger.h"
+//#include "Iron.h"
 
 AIronTrigger::AIronTrigger()
 {
@@ -16,4 +17,5 @@ void AIronTrigger::BeginPlay()
 void AIronTrigger::Event(class AActor* overlappedActor, class AActor* otherActor)
 {
 	
+
 }
