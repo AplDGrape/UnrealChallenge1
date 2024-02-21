@@ -35,17 +35,18 @@ void AIron::Loop()
 	{
 		SpawnActor();
 
-		i++;
-		if (i == 3)
+		//range++;
+		/*if (range == 3)
 		{
-			Range();
-		}
+			Stop();
+		}*/
 	}
 }
 
-void AIron::Range()
+void AIron::Stop()
 {
-	ShouldSpawn = false;
+	if (range >= 3)
+		ShouldSpawn = false;
 }
 
 bool AIron::SpawnActor()

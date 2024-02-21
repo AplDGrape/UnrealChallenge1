@@ -28,7 +28,7 @@ protected:
 	float SpawnDelay = 5.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawner")
-	int i = 0;
+	int range = 0;
 
 public:	
 	// Called every frame
@@ -41,11 +41,11 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite) bool ShouldSpawn = true;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AActor> ActorClassToBeSpawned;
 
 	//Looping
-	UFUNCTION(BlueprintCallable) void Range();
+	UFUNCTION(BlueprintCallable) void Stop();
 
 	//Returns the WhereToSPawn subobject
 	//FORCEINLINE class UBoxComponent* GetWhereToSpawn() const { return WhereToSpawn;  }
