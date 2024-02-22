@@ -2,6 +2,7 @@ Name: Francis Raphael D. Apolinar
 
 Current Instructions:
 - Run in the unreal editor file
+- Run .exe file for gameplay
 
 Classes:
 - Iron -> the code for the iron production
