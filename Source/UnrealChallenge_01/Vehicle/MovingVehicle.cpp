@@ -29,11 +29,18 @@ AMovingVehicle::AMovingVehicle()
 void AMovingVehicle::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	MovementComponent->ControlPoints.Add(FInterpControlPoint(FVector(0.f, 0.f, 0.f), true));
 
 	for (int i = 0; i < ThePath.Num(); i++)
+	{
 		MovementComponent->ControlPoints.Add(FInterpControlPoint(ThePath[i], true));
+
+		if (ThePath.Num() == 2)
+		{
+			SpawnActor();
+		}
+	}
 
 	MovementComponent->FinaliseControlPoints();
 }
@@ -45,3 +52,17 @@ void AMovingVehicle::Tick(float DeltaTime)
 
 }
 
+bool AMovingVehicle::SpawnActor()
+{
+	bool SpawnedActor = false;
+
+	if (Iron)
+	{
+		FBoxSphereBounds BoxBounds = BoxCollider->CalcBounds(GetActorTransform());
+
+		FVector SpawnLocation = BoxBounds.Origin;
+
+		SpawnedActor = GetWorld()->SpawnActor(Iron, &SpawnLocation) != nullptr;
+	}
+	return SpawnedActor;
+}

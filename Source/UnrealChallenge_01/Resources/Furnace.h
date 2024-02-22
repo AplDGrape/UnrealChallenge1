@@ -7,16 +7,16 @@
 
 #include "Components/BoxComponent.h"
 
-#include "Iron.generated.h"
+#include "Furnace.generated.h"
 
 UCLASS()
-class UNREALCHALLENGE_01_API AIron : public AActor
+class UNREALCHALLENGE_01_API AFurnace : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AIron();
+	AFurnace();
 
 protected:
 	// Called when the game starts or when spawned
@@ -25,7 +25,7 @@ protected:
 	FTimerHandle SpawnTimerHandle;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawner")
-	float SpawnDelay = 5.0f;
+	float SpawnDelay = 2.5f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawner")
 	int range = 0;
@@ -34,31 +34,19 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	//Spawn an actor
 	UFUNCTION(BlueprintCallable) bool SpawnActor();
-	
+
 	UFUNCTION(BlueprintCallable) void Loop();
+
+	UFUNCTION(BlueprintCallable) void Start();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite) bool ShouldSpawn = true;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<AActor> ActorClassToBeSpawned;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//TSubclassOf<AActor> Vehicle;
-
-	//Looping
 	UFUNCTION(BlueprintCallable) void Stop();
 
-	//Returns the WhereToSPawn subobject
-	//FORCEINLINE class UBoxComponent* GetWhereToSpawn() const { return WhereToSpawn;  }
-
 private:
-
-	//Box size to spawn actor
 	UPROPERTY(EditDefaultsOnly) UBoxComponent* SpawnBox;
-
-	//Specify where pick ups should spawn
-	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Spawn", meta = (AllowPrivateAccess = "true"))
-	//class UBoxComponent* WhereToSpawn;
 };

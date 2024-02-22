@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 
 #include "Components/ActorComponent.h"
+#include "Components/BoxComponent.h"
 
 #include "MovingVehicle.generated.h"
 
@@ -26,11 +27,20 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	//Vehicle pathing
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Pathing", meta = (ExposeOnSpawn = "true", MakeEditWidget = "true"))
 	TArray<FVector> ThePath;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Pathing", meta = (ExposeOnSpawn = "true", MakeEditWidget = "true"))
-	float CurSpeed = 20;
+	float CurSpeed = 25;
+
+	//Spawning items
+	UFUNCTION(BlueprintCallable) bool SpawnActor();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite) bool ShouldSpawn = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AActor> Iron;
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Components")
